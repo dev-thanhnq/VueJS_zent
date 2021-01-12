@@ -10,7 +10,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import ZentCodingSchool from './components/ZentCodingSchool.vue'
-import Unit1 from "@/components/Unit1/Ex2";
+import Unit1 from "@/components/Homeworks/Session2/Ex1";
 
 export default {
   name: 'App',
