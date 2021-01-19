@@ -3,21 +3,21 @@
 <!--     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 <!--    <ZentCodingSchool />-->
-    <Unit1/>
+    <Ex/>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import ZentCodingSchool from './components/ZentCodingSchool.vue'
-import Unit1 from "@/components/Homeworks/Session2/Ex1";
+import Ex from "@/components/Homeworks/Session4/Product";
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
     // ZentCodingSchool,
-    Unit1
+    Ex
   }
 }
 </script>
@@ -29,6 +29,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0px;
 }
 </style>
