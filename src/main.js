@@ -5,13 +5,15 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import viLocale from 'element-ui/lib/locale/lang/vi'
 import enLocale from 'element-ui/lib/locale/lang/en'
+import router from './router'
 
 Vue.use(ElementUI);
 Vue.use(VueI18n)
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')
 Vue.config.lang = 'vi'
 Vue.locale('en', enLocale)
