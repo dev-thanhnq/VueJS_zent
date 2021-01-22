@@ -4,11 +4,11 @@
         :data="getPaginationProductions"
         border
         style="width: 100%">
-      <el-table-column prop="date" label="Date" width="140">
+      <el-table-column prop="date" label="Mã hóa đơn" width="140">
       </el-table-column>
-      <el-table-column prop="name" label="Name" width="120">
+      <el-table-column prop="name" label="Khách hàng" width="120">
       </el-table-column>
-      <el-table-column prop="address" label="Address">
+      <el-table-column prop="address" label="Địa chỉ">
       </el-table-column>
     </el-table>
     <div class="block" style="float: right">
@@ -29,8 +29,8 @@
 export default {
   data() {
     const item = {
-      date: '2016-05-02',
-      name: 'Tom',
+      date: 'HD',
+      name: 'Thành',
       address: 'No. 189, Grove St, Los Angeles'
     };
     return {

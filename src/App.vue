@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LoginLayout v-if="!checkLogin" @LoginSuccess="login" />
-    <Admin v-else/>
+<!--    <LoginLayout v-if="!checkLogin"/>-->
+    <Admin/>
   </div>
 </template>
 
 <script>
-import LoginLayout from "@/components/Homeworks/Session5/LoginLayout";
+// import LoginLayout from "@/components/Homeworks/Session5/LoginLayout";
 import Admin from "@/components/Homeworks/Session5/Admin";
   export default {
     components: {
-      LoginLayout,
+      // LoginLayout,
       Admin
     },
     data() {
@@ -19,14 +19,12 @@ import Admin from "@/components/Homeworks/Session5/Admin";
       }
     },
     methods: {
-      login(data) {
-        // this.checkLogin = data
-        // if (this.checkLogin) {
-        //   console.log('da ok')
-        // }
-        console.log(data)
-      }
+
     },
+    mounted() {
+      localStorage.login = false
+    },
+
   }
 </script>
 

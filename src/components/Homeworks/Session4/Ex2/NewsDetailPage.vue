@@ -10,9 +10,6 @@
     <template v-slot:ad1>
       <img src="https://i.pinimg.com/564x/28/c3/99/28c3998361879691103163309fe07943.jpg" alt="">
     </template>
-    <template v-slot:main>
-      <router-view/>
-    </template>
     <template v-slot:ad2>
       <img src="https://i.pinimg.com/564x/28/c3/99/28c3998361879691103163309fe07943.jpg" alt="">
     </template>

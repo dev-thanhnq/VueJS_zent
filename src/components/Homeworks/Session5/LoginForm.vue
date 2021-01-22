@@ -43,7 +43,8 @@
           this.errorPass = true
         }
         if (!this.errorPass && !this.errorUsername) {
-          this.$emit('LoginSuccess', 'ok')
+          localStorage.login = true
+          // console.log(localStorage.login)
         }
       },
       onChangeUser(user) {

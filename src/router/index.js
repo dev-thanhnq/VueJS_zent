@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -29,10 +29,21 @@ const routes = [
     component: () => import('../components/Homeworks/Session5/ForgotPassword')
   },
   {
-    path: '/admin',
-    name: 'Admin',
-    component: () => import('../components/Homeworks/Session5/Admin')
-  }
+    path: '/products',
+    name: 'Products',
+    components: {
+      main: () => import('../components/Homeworks/Session5/Products'),
+      title: () => import('../components/Homeworks/Session5/ProductsTitle')
+    }
+  },
+  {
+    path: '/bills',
+    name: 'Bills',
+    components: {
+      main: () => import('../components/Homeworks/Session5/Bill'),
+      title: () => import('../components/Homeworks/Session5/BillsTitle')
+    }
+  },
 ]
 
 const router = new VueRouter({
