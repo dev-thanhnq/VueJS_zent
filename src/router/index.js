@@ -1,14 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/',
+    component: () => import('../components/Homeworks/Session5/LoginLayout'),
+    children: [
+      {
+        path: '/login',
+        name: 'Login',
+        component: () =>import('../components/Homeworks/Session5/LoginForm')
+      },
+      {
+        path: '/forgot-password',
+        name: 'ForgotPassword',
+        component: () => import('../components/Homeworks/Session5/ForgotPassword')
+      },
+    ]
   },
   {
     path: '/about',
@@ -19,14 +29,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () =>import('../components/Homeworks/Session5/LoginForm')
-  },
-  {
-    path: '/forgot-password',
-    name: 'ForgotPassword',
-    component: () => import('../components/Homeworks/Session5/ForgotPassword')
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../components/Homeworks/Session5/Admin'),
+    children: [{
+      path: 'products',
+      components: {
+        main: () => import('../components/Homeworks/Session5/Products'),
+        title: () => import('../components/Homeworks/Session5/ProductsTitle')
+      },
+    },
+    {
+      path: 'bills',
+      name: 'Bills',
+      components: {
+        main: () => import('../components/Homeworks/Session5/Bill'),
+        title: () => import('../components/Homeworks/Session5/BillsTitle')
+      }
+    },]
   },
   {
     path: '/products',
