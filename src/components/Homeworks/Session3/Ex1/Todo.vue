@@ -4,7 +4,7 @@
       <div class="todo">
         <h1 class="title">Todo App</h1>
         <input type="text" v-model="work" @keydown.enter="addWork()" placeholder="Nhập công việc và bấm enter để thêm">
-        <TodoItem :listWorks="listWorks"/>
+        <TodoItem/>
       </div>
     </div>
   </div>
@@ -12,6 +12,7 @@
 
 <script>
   import TodoItem from "./TodoItem"
+  import {mapMutations } from 'vuex'
   export default {
     components: {
       TodoItem
@@ -24,10 +25,11 @@
       }
     },
     methods: {
+      ...mapMutations([
+         'addTodo'
+      ]),
       addWork() {
-        this.listWorks.push({id: this.id, name: this.work, checked: false})
-        this.work = ''
-        this.id += 1
+        this.addTodo({id: this.id, name: this.work, checked: false})
       }
     }
   }

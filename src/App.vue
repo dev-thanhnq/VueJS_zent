@@ -2,17 +2,20 @@
   <div id="app">
 <!--    <LoginLayout v-if="!checkLogin"/>-->
 <!--    <Admin/>-->
-    <router-view/>
+<!--    <router-view/>-->
+    <Ex/>
   </div>
 </template>
 
 <script>
 // import LoginLayout from "@/components/Homeworks/Session5/LoginLayout";
 // import Admin from "@/components/Homeworks/Session5/Admin";
+import Ex from '../src/components/Homeworks/Session7/Exercise'
   export default {
     components: {
       // LoginLayout,
       // Admin
+      Ex
     },
     data() {
       return {

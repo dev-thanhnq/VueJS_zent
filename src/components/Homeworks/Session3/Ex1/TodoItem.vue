@@ -1,6 +1,6 @@
 <template>
   <div class="list-item">
-    <div class="item" v-for="(work, index) in listWorks" :key="index">
+    <div class="item" v-for="(work, index) in todos" :key="index">
       <input type="checkbox" class="check" v-model="work.checked">
       <p v-if="!work.checked">{{work.name}}</p>
       <del v-else>{{ work.name }}</del>
@@ -10,8 +10,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from 'vuex'
   export default {
-    props: ['listWorks'],
     data () {
       return {
 
@@ -19,10 +19,19 @@
     },
     methods: {
       deleteWork(work) {
-        if (this.listWorks.indexOf(work) > -1) {
-          this.listWorks.splice(this.listWorks.indexOf(work), 1);
-        }
-      }
+        this.deleteTodo(work)
+      },
+      ...mapMutations([
+        'deleteTodo'
+      ])
+    },
+    computed: {
+      ...mapState([
+        'todos'
+      ]),
+      ...mapGetters([
+
+      ])
     }
   }
 </script>

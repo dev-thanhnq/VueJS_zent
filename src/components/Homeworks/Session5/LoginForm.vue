@@ -15,12 +15,13 @@
       <el-button @click="forgotPass()">Quên mật khẩu?</el-button>
     </div>
     <button class="btn-login" @click="login()">
-      ĐĂNG NHẬP
+      {{ spentTime }}
     </button>
   </div>
 </template>
 
 <script>
+  import { mapState, mapGetters } from 'vuex'
   export default {
   name: "LoginForm",
     data() {
@@ -44,7 +45,7 @@
         }
         if (!this.errorPass && !this.errorUsername) {
           localStorage.login = true
-          // console.log(localStorage.login)
+          this.$router.push('admin/products')
         }
       },
       onChangeUser(user) {
@@ -55,6 +56,14 @@
         this.password = pass
         this.errorPass = false
       }
+    },
+    computed: {
+      ...mapState([
+        'count'
+      ]),
+      ...mapGetters([
+          'spentTime'
+      ])
     }
   }
 </script>
