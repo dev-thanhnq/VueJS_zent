@@ -49,9 +49,7 @@ const store = new Vuex.Store({
         ],
         cartProducts: [],
         product: {},
-        nameErrorMsg: '',
-        priceErrorMsg: '',
-        quantityErrorMsg: '',
+
     },
     getters: {
         doneTodos: state => {
@@ -106,40 +104,21 @@ const store = new Vuex.Store({
             state.cartProducts.splice(cartIndex, 1)
         },
         //bài 2
-        saveProduct (state, name, price, qty) {
-            let result = true
-
-            if (!name) {
-                result = false
-                state.nameErrorMsg = 'Tên sản phẩm không được để trống'
-            }
-
-            if (!price) {
-                result = false
-                state.priceErrorMsg = 'Giá sản phẩm không được để trống'
-            }
-
-            if (!qty) {
-                result = false
-                state.quantityErrorMsg = 'Số lượng sản phẩm không được để trống'
-            }
-            if (result) {
-                if (Object.keys(state.product).length === 0) {
-                    state.products.push({
-                        id: `SP${new Date().getTime()}`,
-                        name: this.name,
-                        price: parseInt(this.price),
-                        quantity: parseInt(this.quantity),
-                    })
-                } else {
-                    this.$emit('onUpdateProduct', {
-                        id: this.product.id,
-                        name: this.name,
-                        price: parseInt(this.price),
-                        quantity: parseInt(this.quantity),
-                    })
-                }
-                this.clearData()
+        save (state, name, price, quantity) {
+            if (Object.keys(state.product).length === 0) {
+                state.products.push({
+                    id: `SP${new Date().getTime()}`,
+                    name: name,
+                    price: parseInt(price),
+                    quantity: parseInt(quantity),
+                })
+            } else {
+                this.$emit('onUpdateProduct', {
+                    id: this.product.id,
+                    name: name,
+                    price: parseInt(price),
+                    quantity: parseInt(quantity),
+                })
             }
         },
     }

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState, mapMutations} from "vuex";
 export default {
   name: 'ProductForm',
   data () {
@@ -62,7 +62,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'products'
+      'products', 'product',
     ])
   },
   watch: {
@@ -82,33 +82,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+        'save',
+    ]),
     saveProduct () {
-      if (this.isDataValidated()) {
-        if (Object.keys(this.product).length === 0) {
-          this.$emit('onCreateProduct', {
-            id: `SP${new Date().getTime()}`,
-            name: this.name,
-            price: parseInt(this.price),
-            quantity: parseInt(this.quantity),
-          })
-        } else {
-          this.$emit('onUpdateProduct', {
-            id: this.product.id,
-            name: this.name,
-            price: parseInt(this.price),
-            quantity: parseInt(this.quantity),
-          })
-        }
-        this.clearData()
-      }
-    },
-    clearData () {
-      this.name = ''
-      this.price = ''
-      this.quantity = ''
-      this.$emit('onClear')
-    },
-    isDataValidated () {
       let result = true
 
       if (!this.name) {
@@ -125,9 +102,16 @@ export default {
         result = false
         this.quantityErrorMsg = 'Số lượng sản phẩm không được để trống'
       }
-
-      return result
-    }
+      if (result) {
+        this.save(this.name, this.price, this.quantity)
+      }
+      this.clearData()
+    },
+    clearData () {
+      this.name = ''
+      this.price = ''
+      this.quantity = ''
+    },
   }
 }
 </script>

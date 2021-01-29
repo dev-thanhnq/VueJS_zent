@@ -3,7 +3,6 @@
     <ProductForm
         @onCreateProduct="createProduct"
         @onUpdateProduct="updateProduct"
-        @onClear="clearData"
     />
     <ProductList
         @onEditProduct="editProduct"
@@ -55,9 +54,6 @@ export default {
     deleteProduct (index) {
       this.products.splice(index, 1)
     },
-    clearData () {
-      this.product = {}
-    }
   }
 }
 </script>
