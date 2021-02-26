@@ -1,21 +1,21 @@
 <template>
   <div id="app">
 <!--    <LoginLayout v-if="!checkLogin"/>-->
-<!--    <Admin/>-->
+    <Admin/>
 <!--    <router-view/>-->
-    <Ex/>
+<!--    <Ex/>-->
   </div>
 </template>
 
 <script>
 // import LoginLayout from "@/components/Homeworks/Session5/LoginLayout";
-// import Admin from "@/components/Homeworks/Session5/Admin";
-import Ex from '../src/components/Homeworks/Session7/Exercise'
+import Admin from "@/components/Homeworks/Session9/Products";
+// import Ex from '../src/views/About'
   export default {
     components: {
       // LoginLayout,
-      // Admin
-      Ex
+      Admin
+      // Ex
     },
     data() {
       return {
@@ -32,7 +32,7 @@ import Ex from '../src/components/Homeworks/Session7/Exercise'
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 body {
   font-family: Roboto,sans-serif;
   background: #f6f7f9!important;

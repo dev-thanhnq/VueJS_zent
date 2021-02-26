@@ -1,66 +1,39 @@
 <template>
   <el-main>
     <el-table
-        :data="getPaginationProductions"
-        border
+        :data="bills"
         style="width: 100%">
-      <el-table-column prop="date" label="Mã hóa đơn" width="140">
+      <el-table-column
+          prop="name"
+          label="Name"
+          width="180">
       </el-table-column>
-      <el-table-column prop="name" label="Khách hàng" width="120">
-      </el-table-column>
-      <el-table-column prop="address" label="Địa chỉ">
+      <el-table-column
+          prop="address"
+          label="Hành động">
+        <template v-slot:default="slotProps">
+          <el-button type="danger" @click="remove(slotProps.row)">Xóa</el-button>
+        </template>
       </el-table-column>
     </el-table>
-    <div class="block" style="float: right">
-      <el-pagination
-          background
-          @current-change="handleCurrentChange"
-          @prev-click="goPrePage"
-          @next-click="goNextPage"
-          :page-size="5"
-          layout="total, prev, pager, next, jumper"
-          :total="20">
-      </el-pagination>
-    </div>
   </el-main>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
-    const item = {
-      date: 'HD',
-      name: 'Thành',
-      address: 'No. 189, Grove St, Los Angeles'
-    };
-    return {
-      tableData: Array(20).fill(item),
-      currentPage: 1,
-      perPage: 5
-    }
-  },
   methods: {
-    handleCurrentChange(val) {
-      this.currentPage = val
-    },
-    goNextPage () {
-      if (this.currentPage < this.lastPage) {
-        this.currentPage += 1
-      }
-    },
-    goPrePage () {
-      if (this.currentPage > 1) {
-        this.currentPage -= 1
-      }
+    ...mapMutations('bills', [
+       'deleteBill'
+    ]),
+    remove(bill) {
+      this.deleteBill(bill)
     }
   },
   computed: {
-    lastPage () {
-      return Math.ceil(this.tableData.length / this.perPage);
-    },
-    getPaginationProductions () {
-      return this.tableData.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
-    }
+    ...mapState('bills', [
+      'bills'
+    ]),
   }
 }
 </script>
