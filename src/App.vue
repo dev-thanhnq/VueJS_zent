@@ -9,7 +9,7 @@
 
 <script>
 // import LoginLayout from "@/components/Homeworks/Session5/LoginLayout";
-import Admin from "@/components/Homeworks/Session9/Products";
+import Admin from "@/components/Homeworks/Session10/Products";
 // import Ex from '../src/views/About'
   export default {
     components: {
